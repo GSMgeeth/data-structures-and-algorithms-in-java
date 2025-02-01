@@ -1,6 +1,5 @@
 import data_structures.stack.IStack;
-import data_structures.stack.StackWithArray;
-import data_structures.stack.StackWithList;
+import data_structures.stack.StackFactory;
 
 import java.util.Scanner;
 
@@ -38,7 +37,7 @@ public class Main {
             stackType = scanner.nextLine();
         }
 
-        final IStack stack = getStack(stackType);
+        final IStack stack = StackFactory.createStack(stackType);
         stack.push(10);
         stack.push(20);
         stack.push(30);
@@ -55,13 +54,5 @@ public class Main {
         System.out.println("Peeked : " + stack.peek());
 
         stack.display();
-    }
-
-    private static IStack getStack(final String type) {
-        if (type.equalsIgnoreCase("a")) {
-            return new StackWithArray(5);
-        }
-
-        return new StackWithList();
     }
 }

@@ -1,10 +1,10 @@
 package data_structures.stack;
 
-public final class StackWithArray implements IStack {
+final class StackWithArray implements IStack {
     private final int[] stack;
     private int top = -1;
 
-    public StackWithArray(int capacity) {
+    StackWithArray(int capacity) {
         stack = new int[capacity];
     }
 

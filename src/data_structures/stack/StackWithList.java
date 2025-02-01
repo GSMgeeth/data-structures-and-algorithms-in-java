@@ -3,7 +3,7 @@ package data_structures.stack;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class StackWithList implements IStack {
+final class StackWithList implements IStack {
     private final List<Integer> stack = new ArrayList<>();
 
     @Override
