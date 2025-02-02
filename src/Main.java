@@ -1,3 +1,5 @@
+import data_structures.queue.IQueue;
+import data_structures.queue.QueueFactory;
 import data_structures.stack.IStack;
 import data_structures.stack.StackFactory;
 
@@ -18,7 +20,7 @@ public class Main {
 
             switch (sdType) {
                 case "s" -> testStackDS();
-                case "q" -> System.out.println("Queues are still coding away...");
+                case "q" -> testQueueDS();
                 case "ll" -> System.out.println("LinkedLists are still coding away...");
                 case "dll" -> System.out.println("Doubly LinkedLists are still coding away...");
                 default -> System.out.println("Invalid Data Structure type");
@@ -54,5 +56,31 @@ public class Main {
         System.out.println("Peeked : " + stack.peek());
 
         stack.display();
+    }
+
+    private static void testQueueDS() {
+        String queueType = "";
+        while (queueType.isEmpty() || (!queueType.equalsIgnoreCase("a") && !queueType.equalsIgnoreCase("l"))) {
+            System.out.print("Queue with Array (a) / List (l)): ");
+            queueType = scanner.nextLine();
+        }
+
+        final IQueue queue = QueueFactory.createQueue(queueType);
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.enqueue(40);
+        queue.enqueue(50);
+
+        queue.display();
+
+        queue.enqueue(60);
+
+        System.out.println("Dequeued : " + queue.dequeue());
+        System.out.println("Dequeued : " + queue.dequeue());
+
+        System.out.println("Peeked : " + queue.peek());
+
+        queue.display();
     }
 }
