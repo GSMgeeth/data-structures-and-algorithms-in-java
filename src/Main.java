@@ -1,3 +1,5 @@
+import data_structures.linked_list.ILinkedList;
+import data_structures.linked_list.LinkedListFactory;
 import data_structures.queue.IQueue;
 import data_structures.queue.QueueFactory;
 import data_structures.stack.IStack;
@@ -15,14 +17,14 @@ public class Main {
         final String dsOrAlgo = scanner.nextLine();
 
         if (dsOrAlgo.equalsIgnoreCase("d")) {
-            System.out.println("Stack (s) / Queue (q) / LinkedLists (ll) / Doubly LinkedLists (dll): ");
+            System.out.println("Stack (s) / Queue (q) / LinkedList (l) / Tree (t): ");
             final String sdType = scanner.nextLine();
 
             switch (sdType) {
                 case "s" -> testStackDS();
                 case "q" -> testQueueDS();
-                case "ll" -> System.out.println("LinkedLists are still coding away...");
-                case "dll" -> System.out.println("Doubly LinkedLists are still coding away...");
+                case "l" -> testLinkedListDS();
+                case "t" -> System.out.println("Trees are still coding away...");
                 default -> System.out.println("Invalid Data Structure type");
             }
         } else if (dsOrAlgo.equalsIgnoreCase("a")) {
@@ -82,5 +84,33 @@ public class Main {
         System.out.println("Peeked : " + queue.peek());
 
         queue.display();
+    }
+
+    private static void testLinkedListDS() {
+        String linkedListType = "";
+        while (linkedListType.isEmpty() || (!linkedListType.equalsIgnoreCase("s") && !linkedListType.equalsIgnoreCase("d")) && !linkedListType.equalsIgnoreCase("c")) {
+            System.out.print("Singly LinkedList (s) / Doubly LinkedList (d) / Circular LinkedList (c)): ");
+            linkedListType = scanner.nextLine();
+        }
+
+        final ILinkedList<Integer> linkedList = LinkedListFactory.createLinkedList(linkedListType);
+        linkedList.insertAtBeginning(10);
+        linkedList.insertAtBeginning(20);
+        linkedList.insertAtEnd(30);
+        linkedList.insertAtPosition(40, 1);
+        linkedList.insertAtEnd(50);
+        linkedList.insertAtEnd(60);
+
+        linkedList.display();
+
+        linkedList.deleteAtBeginning();
+        linkedList.deleteAtEnd();
+        linkedList.deleteAtPosition(2);
+
+        linkedList.display();
+
+        System.out.println("Value at position 1: " + linkedList.getValueAtPosition(1));
+
+        linkedList.display();
     }
 }
