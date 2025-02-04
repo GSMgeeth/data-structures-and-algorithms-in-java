@@ -1,3 +1,7 @@
+import algorithms.searching.binary_search.BinarySearchFactory;
+import algorithms.searching.binary_search.IBinarySearch;
+import data_structures.linked_list.ILinkedList;
+import data_structures.linked_list.LinkedListFactory;
 import data_structures.queue.IQueue;
 import data_structures.queue.QueueFactory;
 import data_structures.stack.IStack;
@@ -130,7 +134,7 @@ public class Main {
         final int[] array = {10, 21, 32, 43, 54, 65, 76, 87, 98, 109};
         final int value = 87;
 
-        int result = 0;
+        int result;
         if (binarySearch != null) {
             result = binarySearch.search(array, value);
             System.out.println("Element found at index: " + result);
