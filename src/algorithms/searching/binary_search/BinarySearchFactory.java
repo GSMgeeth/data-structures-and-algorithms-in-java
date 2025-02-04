@@ -12,7 +12,7 @@ public final class BinarySearchFactory {
      * @return The binary search instance
      */
     public static IBinarySearch createBinarySearch(final String type) {
-        if (type.equals("iterative")) {
+        if (type.equals("i")) {
             return new IterativeBinarySearch();
         }
 
