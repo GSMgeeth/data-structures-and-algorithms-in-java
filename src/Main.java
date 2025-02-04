@@ -1,3 +1,5 @@
+import algorithms.searching.binary_search.BinarySearchFactory;
+import algorithms.searching.binary_search.IBinarySearch;
 import data_structures.queue.IQueue;
 import data_structures.queue.QueueFactory;
 import data_structures.stack.IStack;
@@ -26,7 +28,14 @@ public class Main {
                 default -> System.out.println("Invalid Data Structure type");
             }
         } else if (dsOrAlgo.equalsIgnoreCase("a")) {
-            System.out.println("Algorithms are still coding away...");
+            System.out.println("Binary Search Algorithm (bs) / Greedy Algorithm (g): ");
+            final String algoType = scanner.nextLine();
+
+            switch (algoType) {
+                case "bs" -> testBinarySearchAlgorithm();
+                case "g" -> System.out.println("Greedy Algorithm is still coding away...");
+                default -> System.out.println("Invalid Algorithm type");
+            }
         } else {
             System.out.println("Invalid choice");
         }
@@ -82,5 +91,25 @@ public class Main {
         System.out.println("Peeked : " + queue.peek());
 
         queue.display();
+    }
+
+    private static void testBinarySearchAlgorithm() {
+        String algoType = "";
+        while (algoType.isEmpty() || (!algoType.equalsIgnoreCase("i") && !algoType.equalsIgnoreCase("r"))) {
+            System.out.print("Iterative Binary Search (i) / Recursive Binary Search (r)): ");
+            algoType = scanner.nextLine();
+        }
+
+        final IBinarySearch binarySearch = BinarySearchFactory.createBinarySearch(algoType);
+        final int[] array = {10, 21, 32, 43, 54, 65, 76, 87, 98, 109};
+        final int value = 87;
+
+        int result = 0;
+        if (binarySearch != null) {
+            result = binarySearch.search(array, value);
+            System.out.println("Element found at index: " + result);
+        } else {
+            System.out.println("Invalid Binary Search type");
+        }
     }
 }
