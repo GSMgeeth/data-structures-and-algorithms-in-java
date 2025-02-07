@@ -1,3 +1,5 @@
+import algorithms.searching.ISearchSorted;
+import algorithms.searching.binary_search.BinarySearchFactory;
 import data_structures.linked_list.ILinkedList;
 import data_structures.linked_list.LinkedListFactory;
 import data_structures.queue.IQueue;
@@ -5,6 +7,7 @@ import data_structures.queue.QueueFactory;
 import data_structures.stack.IStack;
 import data_structures.stack.StackFactory;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -28,7 +31,14 @@ public class Main {
                 default -> System.out.println("Invalid Data Structure type");
             }
         } else if (dsOrAlgo.equalsIgnoreCase("a")) {
-            System.out.println("Algorithms are still coding away...");
+            System.out.println("Binary Search Algorithm (b) / Greedy Algorithm (g): ");
+            final String algoType = scanner.nextLine();
+
+            switch (algoType) {
+                case "b" -> testBinarySearchAlgorithm();
+                case "g" -> System.out.println("Greedy Algorithm is still coding away...");
+                default -> System.out.println("Invalid Algorithm type");
+            }
         } else {
             System.out.println("Invalid choice");
         }
@@ -112,5 +122,23 @@ public class Main {
         System.out.println("Value at position 1: " + linkedList.getValueAtPosition(1));
 
         linkedList.display();
+    }
+
+    private static void testBinarySearchAlgorithm() {
+        String binarySearchType = "";
+        while (binarySearchType.isEmpty() || (!binarySearchType.equalsIgnoreCase("i") && !binarySearchType.equalsIgnoreCase("r"))) {
+            System.out.print("Iterative Binary Search (i) / Recursive Binary Search (r)): ");
+            binarySearchType = scanner.nextLine();
+        }
+
+        final ISearchSorted binarySearch = BinarySearchFactory.createBinarySearch(binarySearchType);
+        final int[] sortedArray = {10, 21, 32, 43, 54, 65, 76, 87, 98, 109};
+        final int target = 87;
+
+        System.out.println("Searching for element " + target + " in sorted array " + Arrays.toString(sortedArray));
+
+        final int result = binarySearch.search(sortedArray, target);
+
+        System.out.println("Element found at index: " + result);
     }
 }

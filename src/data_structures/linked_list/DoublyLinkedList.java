@@ -1,6 +1,6 @@
 package data_structures.linked_list;
 
-public final class DoublyLinkedList<T> implements ILinkedList<T> {
+final class DoublyLinkedList<T> implements ILinkedList<T> {
     @Override
     public void insertAtBeginning(T value) {
 
