@@ -1,21 +1,22 @@
 package algorithms.searching.binary_search;
 
-public final class BinarySearchFactory {
+import algorithms.searching.ISearchSorted;
 
+public final class BinarySearchFactory {
     private BinarySearchFactory() {
     }
 
     /**
-     * Creates an instance of IBinarySearch based on the type.
+     * Creates a whole new binary search based on the type.
      *
-     * @param type The type of binary search to be created
-     * @return The binary search instance
+     * @param type The type of binary search to be created (i for iterative binary search, r for recursive binary search)
+     * @return The binary search
      */
-    public static IBinarySearch createBinarySearch(final String type) {
+    public static ISearchSorted createBinarySearch(final String type) {
         if (type.equals("i")) {
             return new IterativeBinarySearch();
         }
 
-        return null;
+        return new RecursiveBinarySearch();
     }
 }

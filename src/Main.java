@@ -1,5 +1,5 @@
+import algorithms.searching.ISearchSorted;
 import algorithms.searching.binary_search.BinarySearchFactory;
-import algorithms.searching.binary_search.IBinarySearch;
 import data_structures.linked_list.ILinkedList;
 import data_structures.linked_list.LinkedListFactory;
 import data_structures.queue.IQueue;
@@ -7,6 +7,7 @@ import data_structures.queue.QueueFactory;
 import data_structures.stack.IStack;
 import data_structures.stack.StackFactory;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -30,11 +31,11 @@ public class Main {
                 default -> System.out.println("Invalid Data Structure type");
             }
         } else if (dsOrAlgo.equalsIgnoreCase("a")) {
-            System.out.println("Binary Search Algorithm (bs) / Greedy Algorithm (g): ");
+            System.out.println("Binary Search Algorithm (b) / Greedy Algorithm (g): ");
             final String algoType = scanner.nextLine();
 
             switch (algoType) {
-                case "bs" -> testBinarySearchAlgorithm();
+                case "b" -> testBinarySearchAlgorithm();
                 case "g" -> System.out.println("Greedy Algorithm is still coding away...");
                 default -> System.out.println("Invalid Algorithm type");
             }
@@ -124,22 +125,20 @@ public class Main {
     }
 
     private static void testBinarySearchAlgorithm() {
-        String algoType = "";
-        while (algoType.isEmpty() || (!algoType.equalsIgnoreCase("i") && !algoType.equalsIgnoreCase("r"))) {
+        String binarySearchType = "";
+        while (binarySearchType.isEmpty() || (!binarySearchType.equalsIgnoreCase("i") && !binarySearchType.equalsIgnoreCase("r"))) {
             System.out.print("Iterative Binary Search (i) / Recursive Binary Search (r)): ");
-            algoType = scanner.nextLine();
+            binarySearchType = scanner.nextLine();
         }
 
-        final IBinarySearch binarySearch = BinarySearchFactory.createBinarySearch(algoType);
-        final int[] array = {10, 21, 32, 43, 54, 65, 76, 87, 98, 109};
-        final int value = 87;
+        final ISearchSorted binarySearch = BinarySearchFactory.createBinarySearch(binarySearchType);
+        final int[] sortedArray = {10, 21, 32, 43, 54, 65, 76, 87, 98, 109};
+        final int target = 87;
 
-        int result;
-        if (binarySearch != null) {
-            result = binarySearch.search(array, value);
-            System.out.println("Element found at index: " + result);
-        } else {
-            System.out.println("Invalid Binary Search type");
-        }
+        System.out.println("Searching for element " + target + " in sorted array " + Arrays.toString(sortedArray));
+
+        final int result = binarySearch.search(sortedArray, target);
+
+        System.out.println("Element found at index: " + result);
     }
 }

@@ -1,6 +1,6 @@
 package data_structures.linked_list;
 
-public final class SinglyLinkedList<T> implements ILinkedList<T> {
+final class SinglyLinkedList<T> implements ILinkedList<T> {
     private Node<T> head;
 
     @Override
