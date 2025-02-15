@@ -23,7 +23,7 @@ public class Main {
             System.out.println("Stack (s) / Queue (q) / LinkedList (l) / Tree (t): ");
             final String sdType = scanner.nextLine();
 
-            switch (sdType) {
+            switch (sdType.toLowerCase()) {
                 case "s" -> testStackDS();
                 case "q" -> testQueueDS();
                 case "l" -> testLinkedListDS();
@@ -34,7 +34,7 @@ public class Main {
             System.out.println("Binary Search Algorithm (b) / Greedy Algorithm (g): ");
             final String algoType = scanner.nextLine();
 
-            switch (algoType) {
+            switch (algoType.toLowerCase()) {
                 case "b" -> testBinarySearchAlgorithm();
                 case "g" -> System.out.println("Greedy Algorithm is still coding away...");
                 default -> System.out.println("Invalid Algorithm type");
@@ -51,7 +51,7 @@ public class Main {
             stackType = scanner.nextLine();
         }
 
-        final IStack stack = StackFactory.createStack(stackType);
+        final IStack stack = StackFactory.createStack(stackType.toLowerCase());
         stack.push(10);
         stack.push(20);
         stack.push(30);
@@ -77,7 +77,7 @@ public class Main {
             queueType = scanner.nextLine();
         }
 
-        final IQueue queue = QueueFactory.createQueue(queueType);
+        final IQueue queue = QueueFactory.createQueue(queueType.toLowerCase());
         queue.enqueue(10);
         queue.enqueue(20);
         queue.enqueue(30);
@@ -98,12 +98,12 @@ public class Main {
 
     private static void testLinkedListDS() {
         String linkedListType = "";
-        while (linkedListType.isEmpty() || (!linkedListType.equalsIgnoreCase("s") && !linkedListType.equalsIgnoreCase("d")) && !linkedListType.equalsIgnoreCase("c")) {
-            System.out.print("Singly LinkedList (s) / Doubly LinkedList (d) / Circular LinkedList (c)): ");
+        while (linkedListType.isEmpty() || (!linkedListType.equalsIgnoreCase("s") && !linkedListType.equalsIgnoreCase("d")) && !linkedListType.equalsIgnoreCase("cs") && !linkedListType.equalsIgnoreCase("cd")) {
+            System.out.print("Singly LinkedList (s) / Doubly LinkedList (d) / Circular Singly LinkedList (cs) / Circular Doubly LinkedList (cd)): ");
             linkedListType = scanner.nextLine();
         }
 
-        final ILinkedList<Integer> linkedList = LinkedListFactory.createLinkedList(linkedListType);
+        final ILinkedList<Integer> linkedList = LinkedListFactory.createLinkedList(linkedListType.toLowerCase());
         linkedList.insertAtBeginning(10);
         linkedList.insertAtBeginning(20);
         linkedList.insertAtEnd(30);
@@ -131,7 +131,7 @@ public class Main {
             binarySearchType = scanner.nextLine();
         }
 
-        final ISearchSorted binarySearch = BinarySearchFactory.createBinarySearch(binarySearchType);
+        final ISearchSorted binarySearch = BinarySearchFactory.createBinarySearch(binarySearchType.toLowerCase());
         final int[] sortedArray = {10, 21, 32, 43, 54, 65, 76, 87, 98, 109};
         final int target = 87;
 

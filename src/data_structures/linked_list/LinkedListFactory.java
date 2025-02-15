@@ -11,10 +11,11 @@ public final class LinkedListFactory {
      * @return The linked list
      */
     public static <T> ILinkedList<T> createLinkedList(final String type) {
-        if (type.equals("s")) {
-            return new SinglyLinkedList<>();
-        }
-
-        return new DoublyLinkedList<>();
+        return switch (type) {
+            case "s" -> new SinglyLinkedList<>();
+            case "d" -> new DoublyLinkedList<>();
+            case "cs" -> new CircularSinglyLinkedList<>();
+            default -> new CircularDoublyLinkedList<>();
+        };
     }
 }
