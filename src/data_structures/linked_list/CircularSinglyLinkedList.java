@@ -180,6 +180,7 @@ final class CircularSinglyLinkedList<T> implements ILinkedList<T> {
             System.out.print(pointer.data + " ");
             pointer = pointer.next;
         } while (pointer != head);
+
         System.out.println();
     }
 
