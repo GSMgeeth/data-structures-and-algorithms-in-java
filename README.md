@@ -1,4 +1,4 @@
-# Data Structures and Algorithms _(This file is a work-in-progress)_
+# Data Structures and Algorithms
 ## Table of Contents
 1. [Data Structures](#data-structures)
 2. [Algorithms](#algorithms)
