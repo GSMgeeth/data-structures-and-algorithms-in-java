@@ -1,5 +1,7 @@
 import algorithms.searching.ISearchSorted;
 import algorithms.searching.binary_search.BinarySearchFactory;
+import algorithms.sorting.ISort;
+import algorithms.sorting.SortFactory;
 import data_structures.linked_list.ILinkedList;
 import data_structures.linked_list.LinkedListFactory;
 import data_structures.queue.IQueue;
@@ -31,11 +33,12 @@ public class Main {
                 default -> System.out.println("Invalid Data Structure type");
             }
         } else if (dsOrAlgo.equalsIgnoreCase("a")) {
-            System.out.println("Binary Search Algorithm (b) / Greedy Algorithm (g): ");
+            System.out.println("Binary Search Algorithm (b) / Sort (s) / Greedy Algorithm (g): ");
             final String algoType = scanner.nextLine();
 
             switch (algoType.toLowerCase()) {
                 case "b" -> testBinarySearchAlgorithm();
+                case "s" -> testSortAlgorithm();
                 case "g" -> System.out.println("Greedy Algorithm is still coding away...");
                 default -> System.out.println("Invalid Algorithm type");
             }
@@ -127,11 +130,11 @@ public class Main {
     private static void testBinarySearchAlgorithm() {
         String binarySearchType = "";
         while (binarySearchType.isEmpty() || (!binarySearchType.equalsIgnoreCase("i") && !binarySearchType.equalsIgnoreCase("r"))) {
-            System.out.print("Iterative Binary Search (i) / Recursive Binary Search (r)): ");
+            System.out.print("Iterative Binary Search (i) / Recursive Binary Search (r): ");
             binarySearchType = scanner.nextLine();
         }
 
-        final ISearchSorted binarySearch = BinarySearchFactory.createBinarySearch(binarySearchType.toLowerCase());
+        final ISearchSorted binarySearch = BinarySearchFactory.getBinarySearch(binarySearchType.toLowerCase());
         final int[] sortedArray = {10, 21, 32, 43, 54, 65, 76, 87, 98, 109};
         final int target = 87;
 
@@ -140,5 +143,22 @@ public class Main {
         final int result = binarySearch.search(sortedArray, target);
 
         System.out.println("Element found at index: " + result);
+    }
+
+    private static void testSortAlgorithm() {
+        String sortType = "";
+        while (sortType.isEmpty() || (!sortType.equalsIgnoreCase("b") && !sortType.equalsIgnoreCase("m"))) {
+            System.out.print("Bubble Sort (b) / Merge Sort (m): ");
+            sortType = scanner.nextLine();
+        }
+
+        final ISort bubbleSort = SortFactory.getBubbleSort(sortType.toLowerCase());
+        final int[] array = {64, 34, 25, 12, 22, 11, 90};
+
+        System.out.println("Original array: " + Arrays.toString(array));
+
+        bubbleSort.sort(array);
+
+        System.out.println("Sorted array:   " + Arrays.toString(array));
     }
 }
